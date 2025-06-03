@@ -61,6 +61,8 @@ class ReaderRead(ReaderBase):
     class Config:
         orm_mode = True
 
+class BookUpdate(BookBase):
+    pass
 
 # BorrowedBook schemas
 

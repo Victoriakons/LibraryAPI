@@ -28,7 +28,7 @@ def upgrade():
         sa.Column('author', sa.String, nullable=False),
         sa.Column('year', sa.Integer),
         sa.Column('isbn', sa.String, unique=True),
-        sa.Column('count', sa.Integer, nullable=False, server_default='1')
+        sa.Column('copies', sa.Integer, nullable=False, server_default='1')
     )
 
     op.create_table('borrowed_books',

@@ -2,12 +2,12 @@ from .schemas import (
     UserCreate, UserRead, Token,
     BookCreate, BookRead,
     ReaderCreate, ReaderRead,
-    BorrowedBookRead,
+    BorrowedBookRead, BookUpdate
 )
 
 __all__ = [
     "UserCreate", "UserRead", "Token",
     "BookCreate", "BookRead",
     "ReaderCreate", "ReaderRead",
-    "BorrowedBookRead",
+    "BorrowedBookRead", "BookUpdate"
 ]

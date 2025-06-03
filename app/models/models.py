@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func, UniqueConstraint
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+from datetime import datetime
 
 class User(Base):
     __tablename__ = "users"
@@ -37,7 +38,7 @@ class BorrowedBook(Base):
     id = Column(Integer, primary_key=True, index=True)
     book_id = Column(Integer, ForeignKey("books.id"), nullable=False)
     reader_id = Column(Integer, ForeignKey("readers.id"), nullable=False)
-    borrow_date = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    borrow_date = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     return_date = Column(DateTime(timezone=True), nullable=True)
 
     book = relationship("Book", back_populates="borrowed_books")

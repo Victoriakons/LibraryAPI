@@ -9,6 +9,10 @@ def get_book(db: Session, book_id: int):
     return db.query(Book).filter(Book.id == book_id).first()
 
 def create_book(db: Session, book_in: BookCreate):
+    if book_in.isbn:
+        existing = db.query(Book).filter(Book.isbn == book_in.isbn).first()
+        if existing:
+            raise ValueError("Book with this ISBN already exists")
     db_book = Book(**book_in.dict())
     db.add(db_book)
     db.commit()
