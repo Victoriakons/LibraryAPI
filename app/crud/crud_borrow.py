@@ -3,7 +3,7 @@ from sqlalchemy import and_
 from datetime import datetime
 from typing import List
 from app.models import BorrowedBook, Book
-from app.schemas import BorrowOut
+from app.schemas import BorrowedBookRead
 
 MAX_BORROWED_BOOKS = 3
 
@@ -58,7 +58,7 @@ def return_book(db: Session, book_id: int, reader_id: int):
     db.refresh(borrow)
     return borrow
 
-def get_borrowed_books_by_reader(db: Session, reader_id: int) -> List[BorrowOut]:
+def get_borrowed_books_by_reader(db: Session, reader_id: int) -> List[BorrowedBookRead]:
     borrows = db.query(BorrowedBook).filter(
         BorrowedBook.reader_id == reader_id,
         BorrowedBook.return_date.is_(None)

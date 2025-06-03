@@ -1,0 +1,103 @@
+2025-06-03 17:42:09,786 - INFO - Starting API tests...
+2025-06-03 17:42:09,786 - INFO - Step 1: Logging in...
+2025-06-03 17:42:09,983 - INFO - Request: POST http://localhost:8000/api/auth/login
+2025-06-03 17:42:09,983 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '52',
+ 'Content-Type': 'application/x-www-form-urlencoded',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:09,983 - INFO - Body: username=librarian%40example.com&password=securepass
+2025-06-03 17:42:09,983 - INFO - Response: 200 - {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww","token_type":"bearer"}
+2025-06-03 17:42:09,983 - INFO - Login successful
+2025-06-03 17:42:09,983 - INFO - Step 2: Creating book...
+2025-06-03 17:42:09,985 - INFO - Request: POST http://localhost:8000/api/books
+2025-06-03 17:42:09,985 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '96',
+ 'Content-Type': 'application/json',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:09,985 - INFO - Body: b'{"title": "Dune", "author": "Frank Herbert", "year": 1965, "isbn": "9780441172719", "copies": 2}'
+2025-06-03 17:42:09,985 - INFO - Response: 307 - 
+2025-06-03 17:42:09,995 - INFO - Request: POST http://localhost:8000/api/books/
+2025-06-03 17:42:09,995 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '96',
+ 'Content-Type': 'application/json',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:09,995 - INFO - Body: b'{"title": "Dune", "author": "Frank Herbert", "year": 1965, "isbn": "9780441172719", "copies": 2}'
+2025-06-03 17:42:10,036 - INFO - Response: 201 - {"title":"Dune","author":"Frank Herbert","year":1965,"isbn":"9780441172719","copies":2,"description":null,"id":16}
+2025-06-03 17:42:10,036 - INFO - Book created: {'title': 'Dune', 'author': 'Frank Herbert', 'year': 1965, 'isbn': '9780441172719', 'copies': 2, 'description': None, 'id': 16}
+2025-06-03 17:42:10,036 - INFO - Step 3: Creating reader...
+2025-06-03 17:42:10,038 - INFO - Request: POST http://localhost:8000/api/readers
+2025-06-03 17:42:10,038 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '54',
+ 'Content-Type': 'application/json',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,038 - INFO - Body: b'{"name": "Paul Atreides", "email": "paul@arrakis.com"}'
+2025-06-03 17:42:10,038 - INFO - Response: 307 - 
+2025-06-03 17:42:10,048 - INFO - Request: POST http://localhost:8000/api/readers/
+2025-06-03 17:42:10,048 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '54',
+ 'Content-Type': 'application/json',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,048 - INFO - Body: b'{"name": "Paul Atreides", "email": "paul@arrakis.com"}'
+2025-06-03 17:42:10,089 - INFO - Response: 201 - {"name":"Paul Atreides","email":"paul@arrakis.com","id":5}
+2025-06-03 17:42:10,089 - INFO - Reader created: {'name': 'Paul Atreides', 'email': 'paul@arrakis.com', 'id': 5}
+2025-06-03 17:42:10,089 - INFO - Step 4: Borrowing book...
+2025-06-03 17:42:10,103 - INFO - Request: POST http://localhost:8000/api/borrow/?book_id=16&reader_id=5
+2025-06-03 17:42:10,103 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '0',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,103 - INFO - Response: 201 - {"id":5,"book_id":16,"reader_id":5,"borrow_date":"2025-06-03T14:42:10.096493","return_date":null}
+2025-06-03 17:42:10,103 - INFO - Book borrowed: {'id': 5, 'book_id': 16, 'reader_id': 5, 'borrow_date': '2025-06-03T14:42:10.096493', 'return_date': None}
+2025-06-03 17:42:10,103 - INFO - Step 5: Listing borrows...
+2025-06-03 17:42:10,108 - INFO - Request: GET http://localhost:8000/api/borrow/
+2025-06-03 17:42:10,108 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,108 - INFO - Response: 200 - [{"id":5,"book_id":16,"reader_id":5,"borrow_date":"2025-06-03T14:42:10.096493","return_date":null}]
+2025-06-03 17:42:10,108 - INFO - All borrows: [{'id': 5, 'book_id': 16, 'reader_id': 5, 'borrow_date': '2025-06-03T14:42:10.096493', 'return_date': None}]
+2025-06-03 17:42:10,108 - INFO - Step 6: Returning book...
+2025-06-03 17:42:10,119 - INFO - Request: POST http://localhost:8000/api/borrow/5/return
+2025-06-03 17:42:10,119 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'Content-Length': '0',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,119 - INFO - Response: 200 - {"id":5,"book_id":16,"reader_id":5,"borrow_date":"2025-06-03T14:42:10.096493","return_date":"2025-06-03T14:42:10.113351"}
+2025-06-03 17:42:10,119 - INFO - Book returned: {'id': 5, 'book_id': 16, 'reader_id': 5, 'borrow_date': '2025-06-03T14:42:10.096493', 'return_date': '2025-06-03T14:42:10.113351'}
+2025-06-03 17:42:10,119 - INFO - Step 7: Checking borrows after return...
+2025-06-03 17:42:10,124 - INFO - Request: GET http://localhost:8000/api/borrow/
+2025-06-03 17:42:10,124 - INFO - Headers: {'Accept': '*/*',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Authorization': 'Bearer '
+                  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzQ4OTY1MzI5fQ.N1-wjlh5eLQ0NusiwHoVt-PRtWnNwg_yeh4P9gqafww',
+ 'Connection': 'keep-alive',
+ 'User-Agent': 'python-requests/2.32.3'}
+2025-06-03 17:42:10,124 - INFO - Response: 200 - [{"id":5,"book_id":16,"reader_id":5,"borrow_date":"2025-06-03T14:42:10.096493","return_date":"2025-06-03T14:42:10.113351"}]
+2025-06-03 17:42:10,124 - INFO - Borrows after return: [{'id': 5, 'book_id': 16, 'reader_id': 5, 'borrow_date': '2025-06-03T14:42:10.096493', 'return_date': '2025-06-03T14:42:10.113351'}]
+2025-06-03 17:42:10,124 - INFO - All tests completed successfully!

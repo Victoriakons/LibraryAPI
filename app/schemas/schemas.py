@@ -75,3 +75,7 @@ class BorrowedBookRead(BaseModel):
 
     class Config:
         orm_mode = True
+
+class ReaderUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
